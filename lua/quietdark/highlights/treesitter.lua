@@ -1,0 +1,111 @@
+local M = {}
+
+function M.get(c)
+  return {
+    ['@variable'] = { fg = c.fg },
+    ['@variable.builtin'] = { fg = c.red, italic = true },
+    ['@variable.parameter'] = { fg = c.subtext1 },
+    ['@variable.parameter.builtin'] = { fg = c.pink, italic = true },
+    ['@variable.member'] = { fg = c.cyan },
+
+    ['@constant'] = { fg = c.yellow },
+    ['@constant.builtin'] = { fg = c.orange, bold = true },
+    ['@constant.macro'] = { fg = c.pink },
+
+    ['@module'] = { fg = c.cyan },
+    ['@module.builtin'] = { fg = c.cyan, italic = true },
+    ['@label'] = { fg = c.lavender },
+
+    ['@string'] = { fg = c.green },
+    ['@string.documentation'] = { fg = c.green },
+    ['@string.regexp'] = { fg = c.cyan },
+    ['@string.escape'] = { fg = c.orange },
+    ['@string.special'] = { fg = c.lavender },
+    ['@string.special.symbol'] = { fg = c.yellow },
+    ['@string.special.path'] = { fg = c.blue },
+    ['@string.special.url'] = { fg = c.blue, underline = true },
+
+    ['@character'] = { fg = c.green },
+    ['@character.special'] = { fg = c.orange },
+    ['@boolean'] = { fg = c.orange, bold = true },
+    ['@number'] = { fg = c.orange },
+    ['@number.float'] = { fg = c.orange },
+
+    ['@type'] = { fg = c.cyan },
+    ['@type.builtin'] = { fg = c.cyan, italic = true },
+    ['@type.definition'] = { fg = c.cyan },
+    ['@attribute'] = { fg = c.yellow },
+    ['@attribute.builtin'] = { fg = c.yellow, italic = true },
+    ['@property'] = { fg = c.cyan },
+
+    ['@function'] = { fg = c.blue },
+    ['@function.builtin'] = { fg = c.blue, italic = true },
+    ['@function.call'] = { fg = c.blue },
+    ['@function.macro'] = { fg = c.pink },
+    ['@function.method'] = { fg = c.blue },
+    ['@function.method.call'] = { fg = c.blue },
+    ['@constructor'] = { fg = c.cyan },
+
+    ['@operator'] = { fg = c.subtext0 },
+
+    ['@keyword'] = { fg = c.purple, bold = true },
+    ['@keyword.coroutine'] = { fg = c.purple, bold = true },
+    ['@keyword.function'] = { fg = c.purple, bold = true },
+    ['@keyword.operator'] = { fg = c.purple },
+    ['@keyword.import'] = { fg = c.purple },
+    ['@keyword.type'] = { fg = c.purple },
+    ['@keyword.modifier'] = { fg = c.purple },
+    ['@keyword.repeat'] = { fg = c.purple, bold = true },
+    ['@keyword.return'] = { fg = c.purple, bold = true },
+    ['@keyword.debug'] = { fg = c.red },
+    ['@keyword.exception'] = { fg = c.purple, bold = true },
+    ['@keyword.conditional'] = { fg = c.purple, bold = true },
+    ['@keyword.conditional.ternary'] = { fg = c.subtext0 },
+    ['@keyword.directive'] = { fg = c.pink },
+    ['@keyword.directive.define'] = { fg = c.pink },
+
+    ['@punctuation.delimiter'] = { fg = c.overlay2 },
+    ['@punctuation.bracket'] = { fg = c.overlay2 },
+    ['@punctuation.special'] = { fg = c.lavender },
+
+    ['@comment'] = { link = 'Comment' },
+    ['@comment.documentation'] = { fg = c.comment, italic = true },
+    ['@comment.error'] = { fg = c.red, bold = true },
+    ['@comment.warning'] = { fg = c.yellow, bold = true },
+    ['@comment.todo'] = { fg = c.lavender, bold = true },
+    ['@comment.note'] = { fg = c.cyan, bold = true },
+
+    ['@markup'] = { fg = c.fg },
+    ['@markup.strong'] = { fg = c.fg, bold = true },
+    ['@markup.italic'] = { fg = c.subtext1, italic = true },
+    ['@markup.strikethrough'] = { fg = c.overlay2, strikethrough = true },
+    ['@markup.underline'] = { underline = true },
+    ['@markup.heading'] = { fg = c.lavender, bold = true },
+    ['@markup.heading.1'] = { fg = c.red, bold = true },
+    ['@markup.heading.2'] = { fg = c.orange, bold = true },
+    ['@markup.heading.3'] = { fg = c.yellow, bold = true },
+    ['@markup.heading.4'] = { fg = c.green, bold = true },
+    ['@markup.heading.5'] = { fg = c.cyan, bold = true },
+    ['@markup.heading.6'] = { fg = c.lavender, bold = true },
+    ['@markup.quote'] = { fg = c.subtext0, italic = true },
+    ['@markup.math'] = { fg = c.cyan },
+    ['@markup.link'] = { fg = c.lavender },
+    ['@markup.link.label'] = { fg = c.lavender },
+    ['@markup.link.url'] = { fg = c.blue, underline = true },
+    ['@markup.raw'] = { fg = c.green },
+    ['@markup.list'] = { fg = c.lavender },
+    ['@markup.list.checked'] = { fg = c.green },
+    ['@markup.list.unchecked'] = { fg = c.overlay1 },
+
+    ['@diff.plus'] = { fg = c.green },
+    ['@diff.minus'] = { fg = c.red },
+    ['@diff.delta'] = { fg = c.blue },
+
+    ['@tag'] = { fg = c.blue },
+    ['@tag.builtin'] = { fg = c.blue },
+    ['@tag.attribute'] = { fg = c.yellow },
+    ['@tag.delimiter'] = { fg = c.overlay2 },
+  }
+end
+
+return M
