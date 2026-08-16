@@ -1,0 +1,42 @@
+-- Lower-saturation, gentler-contrast variant for long editing sessions.
+return {
+  black = '#11131a',
+  crust = '#15171f',
+  bg0 = '#1b1d27',
+  bg1 = '#20232e',
+  bg2 = '#282b38',
+  bg3 = '#303443',
+  bg4 = '#393d4e',
+
+  border = '#323645',
+  border_active = '#55536f',
+  selection = '#35394a',
+  cursorline = '#20232e',
+
+  fg = '#c1c4d6',
+  subtext1 = '#b2b5c7',
+  subtext0 = '#a2a6b8',
+  overlay2 = '#8e93a7',
+  overlay1 = '#7b8195',
+  overlay0 = '#646a7d',
+  comment = '#7b8195',
+  white = '#d9dce8',
+
+  lavender = '#a4a2d5',
+  blue = '#839fcd',
+  cyan = '#84afb2',
+  green = '#94b79c',
+  yellow = '#c6b589',
+  orange = '#c9a17f',
+  red = '#cc8798',
+  pink = '#c994ad',
+  purple = '#b19ac5',
+
+  diff_add = '#303a37',
+  diff_change = '#2d3442',
+  diff_delete = '#3e3037',
+  diff_text = '#3c465a',
+  search = '#494438',
+  search_current = '#c9a17f',
+  visual = '#35394a',
+}

@@ -1,12 +1,33 @@
 local M = {}
 
-function M.get(c)
+local function styled(base, style)
+  return vim.tbl_extend('force', base, style or {})
+end
+
+function M.get(c, opts)
+  local comments = opts.styles.comments or {}
+  local keywords = opts.styles.keywords or {}
+  local functions = opts.styles.functions or {}
+  local variables = opts.styles.variables or {}
+
+  local kw = function(base)
+    return styled(base, keywords)
+  end
+
+  local fn = function(base)
+    return styled(base, functions)
+  end
+
+  local var = function(base)
+    return styled(base, variables)
+  end
+
   return {
-    ['@variable'] = { fg = c.fg },
-    ['@variable.builtin'] = { fg = c.red, italic = true },
-    ['@variable.parameter'] = { fg = c.subtext1 },
-    ['@variable.parameter.builtin'] = { fg = c.pink, italic = true },
-    ['@variable.member'] = { fg = c.cyan },
+    ['@variable'] = var({ fg = c.fg }),
+    ['@variable.builtin'] = var({ fg = c.red, italic = true }),
+    ['@variable.parameter'] = var({ fg = c.subtext1 }),
+    ['@variable.parameter.builtin'] = var({ fg = c.pink, italic = true }),
+    ['@variable.member'] = var({ fg = c.cyan }),
 
     ['@constant'] = { fg = c.yellow },
     ['@constant.builtin'] = { fg = c.orange, bold = true },
@@ -38,38 +59,38 @@ function M.get(c)
     ['@attribute.builtin'] = { fg = c.yellow, italic = true },
     ['@property'] = { fg = c.cyan },
 
-    ['@function'] = { fg = c.blue },
-    ['@function.builtin'] = { fg = c.blue, italic = true },
-    ['@function.call'] = { fg = c.blue },
-    ['@function.macro'] = { fg = c.pink },
-    ['@function.method'] = { fg = c.blue },
-    ['@function.method.call'] = { fg = c.blue },
+    ['@function'] = fn({ fg = c.blue }),
+    ['@function.builtin'] = fn({ fg = c.blue, italic = true }),
+    ['@function.call'] = fn({ fg = c.blue }),
+    ['@function.macro'] = fn({ fg = c.pink }),
+    ['@function.method'] = fn({ fg = c.blue }),
+    ['@function.method.call'] = fn({ fg = c.blue }),
     ['@constructor'] = { fg = c.cyan },
 
     ['@operator'] = { fg = c.subtext0 },
 
-    ['@keyword'] = { fg = c.purple, bold = true },
-    ['@keyword.coroutine'] = { fg = c.purple, bold = true },
-    ['@keyword.function'] = { fg = c.purple, bold = true },
-    ['@keyword.operator'] = { fg = c.purple },
-    ['@keyword.import'] = { fg = c.purple },
-    ['@keyword.type'] = { fg = c.purple },
-    ['@keyword.modifier'] = { fg = c.purple },
-    ['@keyword.repeat'] = { fg = c.purple, bold = true },
-    ['@keyword.return'] = { fg = c.purple, bold = true },
-    ['@keyword.debug'] = { fg = c.red },
-    ['@keyword.exception'] = { fg = c.purple, bold = true },
-    ['@keyword.conditional'] = { fg = c.purple, bold = true },
-    ['@keyword.conditional.ternary'] = { fg = c.subtext0 },
-    ['@keyword.directive'] = { fg = c.pink },
-    ['@keyword.directive.define'] = { fg = c.pink },
+    ['@keyword'] = kw({ fg = c.purple }),
+    ['@keyword.coroutine'] = kw({ fg = c.purple }),
+    ['@keyword.function'] = kw({ fg = c.purple }),
+    ['@keyword.operator'] = kw({ fg = c.purple }),
+    ['@keyword.import'] = kw({ fg = c.purple }),
+    ['@keyword.type'] = kw({ fg = c.purple }),
+    ['@keyword.modifier'] = kw({ fg = c.purple }),
+    ['@keyword.repeat'] = kw({ fg = c.purple }),
+    ['@keyword.return'] = kw({ fg = c.purple }),
+    ['@keyword.debug'] = kw({ fg = c.red }),
+    ['@keyword.exception'] = kw({ fg = c.purple }),
+    ['@keyword.conditional'] = kw({ fg = c.purple }),
+    ['@keyword.conditional.ternary'] = kw({ fg = c.subtext0 }),
+    ['@keyword.directive'] = kw({ fg = c.pink }),
+    ['@keyword.directive.define'] = kw({ fg = c.pink }),
 
     ['@punctuation.delimiter'] = { fg = c.overlay2 },
     ['@punctuation.bracket'] = { fg = c.overlay2 },
     ['@punctuation.special'] = { fg = c.lavender },
 
-    ['@comment'] = { link = 'Comment' },
-    ['@comment.documentation'] = { fg = c.comment, italic = true },
+    ['@comment'] = styled({ fg = c.comment }, comments),
+    ['@comment.documentation'] = styled({ fg = c.comment }, comments),
     ['@comment.error'] = { fg = c.red, bold = true },
     ['@comment.warning'] = { fg = c.yellow, bold = true },
     ['@comment.todo'] = { fg = c.lavender, bold = true },

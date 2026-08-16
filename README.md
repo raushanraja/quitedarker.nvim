@@ -1,85 +1,102 @@
 # quietdark.nvim
 
-A native Neovim 0.12+ theme built from two visual directions:
+A native Neovim 0.12+ theme built around a dark charcoal/plum foundation,
+restrained OneDark-like syntax semantics, and low-fatigue pastel accents.
 
-- **OneDark Darker:** charcoal structure, restrained code semantics.
-- **Soft plum terminal UI:** ink/plum surfaces, lavender chrome, pastel semantic accents.
+## Variants
 
-The result intentionally avoids both pitch-black backgrounds and high-saturation "rainbow" syntax.
+QuietDark now ships five palettes that share the same highlight system:
 
-## Palette
-
-| Role | Color |
+| Variant | Character |
 | --- | --- |
-| Main background | `#171923` |
-| Deeper chrome | `#11131a` |
-| Raised surface | `#1c1f2b` |
-| Selection | `#30354b` |
-| Border | `#2b3040` |
-| Active border/accent | `#514b78` / `#aaa7e8` |
-| Main text | `#c8cbe0` |
-| Muted text | `#8c91aa` |
-| Comment | `#727990` |
-| Blue/function | `#7ea6e8` |
-| Cyan/type | `#7fc0c4` |
-| Green/string | `#8fc59b` |
-| Purple/keyword | `#bd96d8` |
-| Orange/number | `#e2a06f` |
-| Yellow/warning | `#dcc184` |
-| Pink/red/error | `#e67f99` |
+| `quietdark` | Balanced charcoal/plum default |
+| `quietdark-darker` | Near-black, highest-focus version |
+| `quietdark-soft` | Lower saturation and gentler contrast |
+| `quietdark-warm` | Warmer charcoal/plum, less blue cast |
+| `quietdark-deep` | Strongest plum/lavender identity |
 
-## Install into the Neovim fork
+You can switch directly:
 
-Copy this package's `colors/` and `lua/` directories into Neovim's `runtime/`:
-
-```text
-runtime/
-├── colors/quietdark.lua
-└── lua/quietdark/
-    ├── init.lua
-    ├── palette.lua
-    ├── appearance.lua
-    ├── terminal.lua
-    └── highlights/
+```vim
+:colorscheme quietdark
+:colorscheme quietdark-darker
+:colorscheme quietdark-soft
+:colorscheme quietdark-warm
+:colorscheme quietdark-deep
 ```
 
-Then load it:
-
-```lua
-vim.cmd.colorscheme('quietdark')
-```
-
-For the fork's early default layer, this can be the default while user `init.lua` remains free to select another colorscheme later.
-
-## Standalone plugin usage
-
-Put this repository on `runtimepath`, then:
+Or keep the colorscheme name `quietdark` and choose the palette in setup:
 
 ```lua
 require('quietdark').setup({
+  style = 'soft',
   appearance = true,
   dim_inactive = true,
   transparent = false,
 })
+
 vim.cmd.colorscheme('quietdark')
 ```
 
-To use only the colors and leave borders/fillchars untouched:
+## Native Neovim plugin manager (`vim.pack`)
+
+Once this directory is a Git repository, Neovim 0.12 can install it natively:
 
 ```lua
-require('quietdark').setup({ appearance = false })
+vim.pack.add({
+  'https://github.com/raushanraja/quitedarker.nvim',
+})
+
 vim.cmd.colorscheme('quietdark')
 ```
 
-## Design choices
+For local theme development, adding the working tree directly to runtimepath is
+usually more convenient because edits are immediately visible:
 
-- Body text has high contrast against the main background while secondary UI is deliberately subdued.
-- Variables mostly remain neutral; color is reserved for semantic categories.
-- Keywords are purple + bold, so important syntax does not rely on color alone.
-- Diagnostics use undercurls and low-saturation tinted virtual-text backgrounds.
-- Native Neovim 0.12 completion groups (`PmenuMatch`, `PmenuKind`, `PmenuExtra`, `PmenuBorder`, etc.) are themed directly.
-- LSP inlay hints, code lenses, semantic tokens, references, diagnostics and snippets are covered.
-- Terminal ANSI 0-15 colors use the same palette.
-- `appearance.lua` supplies rounded native borders and quiet separators to move the UI toward the reference mockup.
+```lua
+vim.opt.rtp:prepend('/absolute/path/to/quietdark.nvim')
+vim.cmd.colorscheme('quietdark')
+```
 
-The working name **quietdark** is intentionally isolated to a few module/path names so it can be renamed once the fork has a product name.
+## Configuration
+
+```lua
+require('quietdark').setup({
+  style = 'quietdark', -- quietdark | darker | soft | warm | deep
+  transparent = false,
+  dim_inactive = true,
+  terminal_colors = true,
+  appearance = true,
+
+  styles = {
+    comments = { italic = true },
+    keywords = { bold = true },
+    functions = {},
+    variables = {},
+  },
+})
+```
+
+`styles` controls code syntax typography. UI groups such as `StatusLine`,
+`WinBar`, `LineNr`, `Pmenu`, `NormalFloat`, and diagnostics have their own
+highlight definitions and are not changed by these syntax style settings.
+
+## Appearance layer
+
+When `appearance = true`, QuietDark also applies a small amount of Neovim 0.12
+UI geometry:
+
+- rounded `winborder` and `pumborder`
+- quiet box-drawing split separators
+- compact fold glyphs
+- hidden end-of-buffer `~` markers
+- matching diff filler
+
+Set `appearance = false` if you only want the palette/highlights.
+
+## Coverage
+
+The shared highlight layer covers core editor UI, status/tab/win bars, gutters,
+floats, completion (`Pmenu*`), search, diff, folds, diagnostics, LSP inlay hints
+and code lenses, Tree-sitter captures, semantic-token overrides, snippets, and
+terminal ANSI colors.

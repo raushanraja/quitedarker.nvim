@@ -1,18 +1,24 @@
 local M = {}
 
 M.defaults = {
+  -- Palette variant. Also available directly as :colorscheme quietdark-<style>.
+  style = 'quietdark',
+
   transparent = false,
   dim_inactive = true,
   terminal_colors = true,
+
+  -- Typography for code syntax. UI groups such as StatusLine/Pmenu/LineNr
+  -- are themed separately in highlights/editor.lua.
   styles = {
     comments = { italic = true },
     keywords = { bold = true },
     functions = {},
     variables = {},
   },
+
   -- Structural choices are deliberately separate from the colorscheme.
-  -- The fork can enable these by default, while ordinary colorscheme users
-  -- can opt out with setup({ appearance = false }).
+  -- Disable this if you only want the colors/highlights.
   appearance = true,
 }
 

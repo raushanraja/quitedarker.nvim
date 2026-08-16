@@ -1,0 +1,42 @@
+-- Warmer charcoal/plum variant with less blue cast.
+return {
+  black = '#0d0c10',
+  crust = '#111014',
+  bg0 = '#19181d',
+  bg1 = '#201e24',
+  bg2 = '#29262e',
+  bg3 = '#322f39',
+  bg4 = '#3b3742',
+
+  border = '#35313b',
+  border_active = '#5a4d69',
+  selection = '#39323f',
+  cursorline = '#201e24',
+
+  fg = '#cec7ce',
+  subtext1 = '#bab3bc',
+  subtext0 = '#a7a0aa',
+  overlay2 = '#918993',
+  overlay1 = '#766f79',
+  overlay0 = '#5f5964',
+  comment = '#77707c',
+  white = '#e6dfe5',
+
+  lavender = '#b1a2cf',
+  blue = '#899fc8',
+  cyan = '#82aaa8',
+  green = '#94b499',
+  yellow = '#cfba83',
+  orange = '#d6a07a',
+  red = '#d07f90',
+  pink = '#d18fae',
+  purple = '#b995c4',
+
+  diff_add = '#30372f',
+  diff_change = '#2d303c',
+  diff_delete = '#3b2b31',
+  diff_text = '#3b4051',
+  search = '#484034',
+  search_current = '#d6a07a',
+  visual = '#39323f',
+}

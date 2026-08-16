@@ -4,6 +4,7 @@ function M.get(c, opts)
   local comments = opts.styles.comments or {}
   local keywords = opts.styles.keywords or {}
   local functions = opts.styles.functions or {}
+  local variables = opts.styles.variables or {}
 
   return {
     Comment = vim.tbl_extend('force', { fg = c.comment }, comments),
@@ -16,7 +17,7 @@ function M.get(c, opts)
     Boolean = { fg = c.orange, bold = true },
     Float = { fg = c.orange },
 
-    Identifier = { fg = c.fg },
+    Identifier = vim.tbl_extend('force', { fg = c.fg }, variables),
     Function = vim.tbl_extend('force', { fg = c.blue }, functions),
 
     Statement = vim.tbl_extend('force', { fg = c.purple }, keywords),

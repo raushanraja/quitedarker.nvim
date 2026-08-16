@@ -1,0 +1,42 @@
+-- Stronger ink/plum identity inspired by the original visual reference.
+return {
+  black = '#09070d',
+  crust = '#0e0c14',
+  bg0 = '#15131d',
+  bg1 = '#1b1825',
+  bg2 = '#24202f',
+  bg3 = '#2d283a',
+  bg4 = '#373145',
+
+  border = '#353047',
+  border_active = '#514a69',
+  selection = '#342e47',
+  cursorline = '#1b1825',
+
+  fg = '#ccc7dc',
+  subtext1 = '#bab4ce',
+  subtext0 = '#a7a1ba',
+  overlay2 = '#8f89a2',
+  overlay1 = '#746e89',
+  overlay0 = '#5d5770',
+  comment = '#746e89',
+  white = '#e7e2f0',
+
+  lavender = '#b0a6e8',
+  blue = '#849fe0',
+  cyan = '#82b6ba',
+  green = '#94bd9b',
+  yellow = '#d4bb84',
+  orange = '#dda076',
+  red = '#de8099',
+  pink = '#df97bb',
+  purple = '#c09cdb',
+
+  diff_add = '#28352f',
+  diff_change = '#282d43',
+  diff_delete = '#382734',
+  diff_text = '#393755',
+  search = '#464035',
+  search_current = '#dda076',
+  visual = '#342e47',
+}
