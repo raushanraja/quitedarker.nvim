@@ -58,7 +58,7 @@ function M.get(c, opts)
     IncSearch = { fg = c.crust, bg = c.yellow, bold = true },
     CurSearch = { fg = c.crust, bg = c.search_current, bold = true },
     Substitute = { fg = c.crust, bg = c.pink },
-    MatchParen = { fg = c.orange, bold = true, underline = true },
+    MatchParen = { fg = c.bg0, bg = c.lavender, bold = true },
 
     FloatBorder = { fg = c.border_active, bg = float_bg },
     FloatTitle = { fg = c.lavender, bg = float_bg, bold = true },
